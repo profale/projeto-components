@@ -1,5 +1,88 @@
 <div class="cards-container">
-  <app-card></app-card>
+  <app-card [planType]="cardPlanType" [planPriceAlias]="cardPlanPrice"></app-card>
   <app-card-roxo></app-card-roxo>
 </div>
 
+<br/>
+
+<div class="container">
+  <p>Eventos, Atributos e Propriedades</p>
+  <!--[attr.nomedoatributo]-->
+  <!--(evento)-->
+  <!--[] = enviar o valor-->
+  <!--() = receber o valor/evento-->
+  <input
+    id="meu-input"
+    [value] = "inputText"
+    [type] = "inputType"
+    [disabled]= "isDisabled"
+    (input) = "handleInputEvent($event)"
+  />
+
+  <br/>
+
+  <button (click)="enableInput()">Habilitar</button>
+  <button (click)="disabledInput()">Desabilitar</button>
+
+  <br/>
+
+  <button (click)="setPasswordTypeInput()">Senha</button>
+  <button (click)="setTextTypeInput()">Textp</button>
+
+  <br/>
+
+  <button (click)="logInputText()">Log</button>
+
+  <br/>
+
+  <button [attr.title]="buttonTitle">Teste</button>
+
+  <br/>
+
+  <button [attr.disabled]="buttonDisabled ? true: null">Disabled</button>
+
+  <br/>
+
+  <button (click)="onButtonClick()">Mudar Props</button>
+
+  <br/>
+
+  <p>CSS Style</p>
+
+  <button style="width: 100px; background-color: aqua;">Botão 0</button><br/>
+
+  <button [style.width]="widthButton1" [style.backgroundColor]="'blue'">Botão 1</button><br/>
+
+  <button [style.width.px]="widthButton2" [style.backgroundColor]="'pink'">Botão 2</button><br/>
+
+  <button [style]="'width: 140px; backgroundColor: brown;'">Botão 3</button><br/>
+
+  <button [style]="{ width: '150px', backgroundColor: 'orange'}">Botão 4</button><br/>
+
+  <button [style]="stylesObj">Botão 5</button><br/>
+
+  <br/>
+
+  <button (click)="updateStyleObj()">Atualizar obj</button><br/>
+  <button (click)="updateStyleObjCorrect()">Atualizar obj correto</button><br/>
+  <button (click)="updateWidth()">Ataulizar width</button><br/>
+
+  <!--CSS Class Binding-->
+  <!--class chumbada-->
+  <button class="red-button">Teste</button><br/>
+
+  <!--class dinamica-->
+  <button [class.red-button]="isRedButton" (click)="isGreen = false;">Vermelho</button>
+  <button [class.green-button]="isGreen" (click)="isGreen = true;">Verde</button>
+
+  <br/>
+
+  <button [class]="'red-button green-button'">Verde</button>
+
+  <button [class]="{'red-button': !isGreen, 'green-button': isGreen}">Objeto</button>
+
+  <br/>
+  <!--Get - Set-->
+  <input #meuInput type="text" (keyup)="handlePlanType(meuInput.value)" placeholder="Digite o plano" />
+
+</div>
